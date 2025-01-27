@@ -1,0 +1,129 @@
+/* src/components/Result/Result.module.css */
+.container {
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 2rem;
+    border-left: 4px solid;
+    transition: all 0.3s ease, transform 0.3s ease;
+    animation: fadeIn 0.8s ease-out;
+  }
+  
+  .container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .success {
+    border-left-color: #10b981;
+    background-color: #f0fdf4;
+    animation: successHighlight 1s ease-out;
+  }
+  
+  .failure {
+    border-left-color: #ef4444;
+    background-color: #fef2f2;
+    animation: failureShake 0.8s ease-out;
+  }
+  
+  .title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1rem;
+    animation: fadeInText 0.8s ease-out;
+  }
+  
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .resultItem {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    animation: slideIn 0.6s ease-out;
+  }
+  
+  .label {
+    font-weight: 500;
+    color: #4b5563;
+    min-width: 100px;
+  }
+  
+  .value {
+    font-weight: 600;
+    color: #1f2937;
+  }
+  
+  @media (max-width: 640px) {
+    .container {
+      padding: 1rem;
+    }
+  
+    .resultItem {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.25rem;
+    }
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeInText {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes successHighlight {
+    0% {
+      background-color: #e0fce7;
+    }
+    100% {
+      background-color: #f0fdf4;
+    }
+  }
+  
+  @keyframes failureShake {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-5px);
+    }
+    50% {
+      transform: translateX(5px);
+    }
+    75% {
+      transform: translateX(-5px);
+    }
+  }
+  
