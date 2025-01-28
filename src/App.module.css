@@ -25,6 +25,10 @@
   animation: fadeInText 1.2s ease-in-out;
 }
 
+.title:hover {
+  animation: pulseScale 1s ease-in-out infinite;
+}
+
 .subtitle {
   font-size: 1.5rem;
   font-weight: 600;
@@ -46,10 +50,19 @@
   border-radius: 0.5rem;
   transform: scale(0.95);
   transition: transform 0.3s ease;
+  animation: floatIn 0.8s ease-out;
 }
 
 .uploaderWrapper:hover {
   transform: scale(1);
+  animation: shimmer 2s infinite linear;
+  background: linear-gradient(
+    90deg,
+    #f9fafb 0%,
+    #ffffff 50%,
+    #f9fafb 100%
+  );
+  background-size: 200% 100%;
 }
 
 .buttonContainer {
@@ -67,6 +80,26 @@
   border: none;
   cursor: pointer;
   transition: all 0.2s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease-out, height 0.6s ease-out;
+}
+
+.button:active::after {
+  width: 200%;
+  height: 200%;
 }
 
 .button:disabled {
@@ -77,6 +110,7 @@
 .button:hover:not(:disabled) {
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
   transform: translateY(-2px);
+  animation: wobble 0.8s ease-in-out;
 }
 
 .buttonVF {
@@ -97,7 +131,7 @@
   background-color: #059669;
 }
 
-/* Animations */
+/* Existing Animations */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -127,4 +161,62 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* New Animations */
+@keyframes pulseScale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes floatIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(0.95);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes wobble {
+  0%, 100% {
+    transform: translateY(-2px) rotate(0);
+  }
+  25% {
+    transform: translateY(-2px) rotate(-2deg);
+  }
+  75% {
+    transform: translateY(-2px) rotate(2deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading {
+  animation: spin 1s linear infinite;
 }
