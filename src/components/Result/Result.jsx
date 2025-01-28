@@ -1,4 +1,3 @@
-// src/components/Result/Result.jsx
 import React from 'react';
 import styles from './Result.module.css';
 
@@ -13,12 +12,6 @@ export const Result = ({ result }) => {
           <span className={styles.label}>Isomorphic:</span>
           <span className={styles.value}>
             {result.isIsomorphic ? 'Yes' : 'No'}
-          </span>
-        </div>
-        <div className={styles.resultItem}>
-          <span className={styles.label}>CPU Time:</span>
-          <span className={styles.value}>
-            {result.cpuTime} ms
           </span>
         </div>
       </div>

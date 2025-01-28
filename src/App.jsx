@@ -1,5 +1,4 @@
-// src/App.jsx
-import  { useState } from 'react';
+import { useState } from 'react';
 import { FileUploader } from './components/FileUploader/FileUploader';
 import { Result } from './components/Result/Result';
 import { parseGraphFromText } from './components/utils/graphParser';
@@ -29,20 +28,16 @@ const App = () => {
     }
 
     setLoading(true);
-    
+
     // Wrap in setTimeout to allow UI to update
     setTimeout(() => {
-      const startTime = performance.now();
       const isIsomorphic = algorithmType === 'VF' 
         ? checkIsomorphismVF(graph1, graph2)
         : checkIsomorphismVF2(graph1, graph2);
-      const endTime = performance.now();
-      const cpuTime = endTime - startTime;
 
       setResult({
         algorithm: algorithmType,
-        isIsomorphic,
-        cpuTime: cpuTime.toFixed(2)
+        isIsomorphic
       });
       setLoading(false);
     }, 0);
